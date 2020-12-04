@@ -26,7 +26,8 @@ class CleanNotebook:
         """
         new_data = copy.deepcopy(self.data)
         new_data["metadata"]["language_info"]["version"] = 3
-        new_data["metadata"].pop('kernelspec')
+        if "kernelspec" in new_data["metadata"]:
+            new_data["metadata"].pop('kernelspec')
         for index, cell in enumerate(self.data["cells"]):
             if cell["cell_type"] == "code":
                 new_data["cells"][index]["metadata"] = {}
