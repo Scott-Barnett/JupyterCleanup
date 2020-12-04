@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import json
 import copy
 import sys
@@ -48,4 +50,11 @@ class CleanNotebook:
         except FileNotFoundError:
             return False
 
-CleanNotebook(sys.argv[1])
+def main():
+    if len(sys.argv) != 2:
+        print('Please use the format "JupyterCleanup <path_to_ipynb>"')
+        return
+    CleanNotebook(sys.argv[1])
+
+if __name__ == "__main__":
+    main()
